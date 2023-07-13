@@ -7,4 +7,10 @@ class LoginPageLocators:
 
 
 class ProjectPageLocators:
-    pass
+    TOOLS = "#toolsLink"
+    LIBRARY = "//span[normalize-space()='Library']"
+    UPLOAD_BUTTON = ".nx-button.nx-button--small.ng-scope"
+    SAVE_BUTTON = "#saveBtn"
+    FILE_ICON = ".nx-button.nx-button--small.ng-binding"
+    MY_FILES_SECTION = ".nx-button.nx-button--small.ng-binding"
+    FILES_LIST = "li"

@@ -12,3 +12,10 @@ class TestProjectPage:
         project_page.fill_search_project_field()
         project_page.check_number_projects_and_names()
 
+    def test_upload_file(self, page, login):
+        project_page = ProjectPage(page, page.url)
+        project_page.open_library_page()
+        # project_page.upload_file()
+        initial_files_number = project_page.get_files_number()
+        project_page.upload_file()
+        project_page.check_is_file_uploaded(initial_files_number)
