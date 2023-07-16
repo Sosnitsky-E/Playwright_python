@@ -47,8 +47,20 @@ class ProjectPage(BasePage):
         files_names_list = files_area.locator(".HBFileThumbnailstyles__ThumbnailFileName-sc-1dp5vxz-6.jlzfgv").all_text_contents()
         return files_names_list
 
+    def delete_file(self):
+        self.page.locator("main[id='main-ui-view'] li:nth-child(5)").hover()
+        # page.get_by_role("listitem").filter(has_text="Upload.txt").hover()
+        a = self.page.locator("main[id='main-ui-view'] li:nth-child(5)")
+        s = a.locator("#Combined-Shape[fill-rule='nonzero']").click()
+        self.page.locator(".hb-popup__actions #btnPopupOK").click()
+
     def check_is_file_uploaded(self, files):
         num_files = len(files)
         actual_num_files = self.get_files_number()
-        assert num_files + 1 == len(actual_num_files)
+        assert num_files + 1 == len(actual_num_files), "The file is not uploaded."
+
+    def check_is_file_deleted(self, files):
+        num_files = len(files)
+        actual_num_files = self.get_files_number()
+        assert num_files - 1 == len(actual_num_files), "The file is not deleted."
 

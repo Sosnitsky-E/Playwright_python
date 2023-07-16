@@ -15,7 +15,13 @@ class TestProjectPage:
     def test_upload_file(self, page, login):
         project_page = ProjectPage(page, page.url)
         project_page.open_library_page()
-        # project_page.upload_file()
         initial_files_number = project_page.get_files_number()
         project_page.upload_file()
         project_page.check_is_file_uploaded(initial_files_number)
+
+    def test_delete_file(self, page, login):
+        project_page = ProjectPage(page, page.url)
+        project_page.open_library_page()
+        initial_files_number = project_page.get_files_number()
+        project_page.delete_file()
+        project_page.check_is_file_deleted(initial_files_number)
